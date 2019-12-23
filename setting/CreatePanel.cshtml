@@ -1,0 +1,114 @@
+@{ViewData["titleHeader"] = "Create Panel";}
+<section id="main-content">
+<section class="wrapper">
+
+
+ <div class="col-lg-12">
+                        <section class="panel">
+                            <header class="panel-heading">
+                               ساخت پنل 
+                            </header>
+                              <div class="panel-body">
+                                    <div class="panel-body">
+                                  <form class="form-horizontal tasi-form" id="matrial-form" action="SelectOption" method='post' >
+                                        <div class="form-group">
+                                        <label class="col-sm-2 control-label">ویژگی ها :</label>
+                                        <div class="col-sm-7">
+                                               <select class="form-control input-lg m-bot15" name="masterOptionName">
+                                                @if(ViewBag._master_Option_Name!=null){
+                                                foreach(var mt in ViewBag._master_Option_Name){
+                                                <option>@mt.name</option>
+                                                }
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                     <div class="form-group">
+                                        <label class="col-sm-2 control-label">زمان:</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" name="time">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        
+                                        <div class="col-sm-7">
+                                    <button type="submit"  style="float:right;" class="btn btn-lg btn-info" id="mtrial-btn">اضافه کردن</button>
+                                    </div>
+                                    </div>
+                                  </form>
+   <div class="row">
+                  <div class="col-lg-12" style="margin-top:20px">
+                        <section class="panel">
+                          <div class="panel-body progress-panel">
+                              <div class="task-progress">
+                                  <h1>ویژگی ها</h1>
+                              </div>
+                          </div>
+                          <table class="table table-hover personal-task" id="productList">
+                              <tbody>
+                                  <tr>
+                                      <td>نام </td>
+                                      <td>زمان</td>
+                                      <td>حذف</td>
+                                  </tr>
+                                  @if(ViewBag._master_Option_Tabel!=null){
+                                  @foreach (var item in ViewBag._master_Option_Tabel)
+                                  {
+                              <tr>
+                                  <td>
+                                      @item.masterOptionName
+                                  </td>
+                                  <td>
+                                      @item.time
+                                  </td>
+                                  <td><a asp-controller="setting" asp-action="removePanelOption" asp-route-id="@item.genericCode">حذف</a><td>
+                              </tr>
+                                  }
+                                  }
+                              </tbody>
+                          </table>
+                      </section>
+                      </div>
+                      </div>
+                            </div>
+                              </div>
+                        </section>
+                       
+
+                        <section class="panel">
+                            <div class="panel-body">
+                                <form class="form-horizontal tasi-form" method="POST" action="CreatePanel"  id="panel-form-submit">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">نام :</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="name">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">مبلغ :</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" name="amount">
+                                        </div>
+                                    </div>
+                                    
+                              <button  type="submit" class="btn btn-lg btn-info" id="panel-btn-submit">ثبت </button>
+                                </form>
+                            </div>
+                            <script >
+                        $('#panel-btn-submit').confirm({
+                        title:"هشدار",
+                        content:"از انچام این عملیات مطمئن هستید؟",
+                        buttons:{
+                        بله:function(button){
+                        $("#panel-form-submit").submit();
+                        },
+                        خیر: function(button) {
+                        }}
+                            });
+                        </script>
+                        </section>
+ </div>
+
+
+</section>
+</section>

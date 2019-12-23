@@ -1,0 +1,39 @@
+<!-- Modal -->
+  <div class="modal fade" id="mymasterModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      @if((int)ViewBag.mastermodalhandeller== 1){
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">@ViewBag.mastermodalhandellertitle</h4>
+        </div>
+        <div class="modal-body">
+          <p>@ViewBag.mastermodalhandellermessage</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">باشه</button>
+        </div>
+      </div>
+      <script>
+      $(document).ready(function(){
+        $("#mymasterModal").modal();
+      });
+</script>
+      }else if((int)ViewBag.mastermodalhandeller== 2){
+        <script >
+    $('#sell-btn-submit').confirm({
+    title:"هشدار",
+    content:"از انچام این عملیات مطمئن هستید؟",
+    buttons:{
+    بله:function(button){
+        $("#@ViewBag.mastermodalhandellerformID").submit();
+    },
+     خیر: function(button) {
+    }}
+    });
+    </script>
+      }
+      <!--end modal content-->
+    </div>
+  </div>
+  

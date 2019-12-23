@@ -1,0 +1,60 @@
+@{ViewData["titleHeader"] = "api manage";}
+<section id="main-content">
+<section class="wrapper">
+
+<div class="row">
+      <div class="col-lg-12">
+             <section class="panel">
+                            <header class="panel-heading">
+                             لیست موادغذایی
+                            </header>
+                            <table class="table table-striped border-top" id="sample_1">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 8px;">
+                                              شماره
+                                            </th>
+                                        <th>نام </th>
+                                        <th class="hidden-phone">لینک</th>
+                                        <th class="hidden-phone">ثبت</th>
+                                        <th class="hidden-phone">وضعیت</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                               @{int count =1;}
+                                  @foreach (var item in ViewBag.api_setting_show)
+                                  {
+                                    <tr class="odd gradeX">
+                                        <td>
+                                            @count
+                                        </td>
+                                        <td class="center hidden-phone">@item.name</td>
+                                        <form method="Post" action="updateApi">
+                                        <td class="center hidden-phone">
+                                                <input type="text" class="form-control" name="link" value="@item.link">
+                                        </td>
+                                        <td class="center hidden-phone">
+                                              <input type="text" class="hidden" name="id" value="@item.id" />
+                                              <button class="btn btn-md btn-info display-4" type="submit">ثبت</button>
+                                              </td>
+                                    </form>
+                                    @if(item.status){
+                                        <td class="center hidden-phone"><a class="btn btn-md btn-primary display-4" href="~/setting/changeApistatus/@item.id">فعال</a></td>
+                                    }else{
+                                        <td class="center hidden-phone"><a class="btn btn-md btn-warning display-4" href="~/setting/changeApistatus/@item.id">غیر فعال</a></td>
+                                    }
+                                    </tr>
+                                    count++;
+                                    }
+                                </tbody>
+                            </table>
+                        </section>
+      </div>
+</div>
+
+
+
+
+</section>
+</section>

@@ -1,0 +1,18 @@
+@{
+      Layout = "_loginLayout";
+      ViewBag.titleHeader="login";
+}
+
+<div class="container">
+      <form class="form-signin" method="POST" action="login">
+        <h2 class="form-signin-heading">همین حالا وارد شوید</h2>
+        <div class="login-wrap">
+            <input type="text" name="username" class="form-control" placeholder="نام کاربری" autofocus>
+            <input type="password" name="password" class="form-control" placeholder="کلمه عبور">
+            <button class="btn btn-lg btn-login btn-block" type="submit">ورود</button>
+            <h4 style="color:red;">@ViewBag.message</h4>
+        </div>
+
+      </form>
+
+    </div>

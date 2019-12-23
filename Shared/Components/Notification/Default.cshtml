@@ -1,0 +1,37 @@
+                                <li id="header_notification_bar" class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+
+                            <i class="icon-bell-alt"></i>
+                             @if((Boolean)ViewBag.haveNotificationCount==true){
+                            <span class="badge bg-warning">@ViewBag.NotificationCount</span>
+                             }
+                        </a>
+                        <ul class="dropdown-menu extended notification">
+                            @if((Boolean)ViewBag.haveNotificationCount==true){
+                            <div class="notify-arrow notify-arrow-yellow"></div>
+                            <li>
+                                <p class="yellow">شما @ViewBag.NotificationCount اعلام جدید دارید</p>
+                            </li>
+                            @foreach(var item in ViewBag.newTickerListHeader){
+                            <li>
+                                @if(User.IsInRole("admin")){
+                                <a href="~/Support/adminView/@item.id">
+                                    <span class="label label-danger"><i class="icon-bolt"></i></span>
+                                    @item.title
+                                    <span class="small italic">@item.answerTime</span>
+                                </a>
+                                }else{
+                                     <a href="~/Support/View/@item.id">
+                                    <span class="label label-danger"><i class="icon-bolt"></i></span>
+                                    @item.title
+                                    <span class="small italic">@item.answerTime</span>
+                                </a>
+                                }
+                            </li>
+                            }
+                            <li>
+                                <a href="~/support/message">نمایش تمامی اعلام ها</a>
+                            </li>
+                             }
+                        </ul>
+                    </li>
